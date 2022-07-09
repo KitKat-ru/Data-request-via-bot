@@ -8,7 +8,7 @@ from flask import Flask, request
 # TOKEN = os.getenv('TOKEN', default='YOU_TOKEN')
 # APP_URL = os.getenv('URL', default='HEROKU_URL')
 TOKEN = '5304389044:AAFz8QjdylhnXrPhXnpC_hJnkoJMh4mynAc'
-APP_URL = 'https://git.heroku.com/testcasebotartem.git'
+APP_URL = f'https://git.heroku.com/testcasebotartem.git/{TOKEN}'
 
 bot = telebot.TeleBot(TOKEN)
 
