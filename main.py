@@ -1,5 +1,6 @@
 import os
-import telebot
+import telebot, types
+# from telebot import types
 from flask import Flask, request
 from dotenv import load_dotenv
 
@@ -16,9 +17,19 @@ server = Flask(__name__)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.send_message(message.chat.id, f'Привет {message}, а дай номер.')
+    markup = telebot.types.InlineKeyboardMarkup()
+    buttonA = telebot.types.InlineKeyboardButton('request_contact', callback_data='request_contact')
+    markup.row(buttonA)
+    bot.send_message(message.chat.id, f'Привет {message}, а дай номер.', reply_markup=markup)
+
+
+@bot.callback_query_handler(func=lambda call: True)
+def handle(call):
+    bot.send_message(call.message.chat.id, 'Data: {}'.format(str(call.data)))
+    bot.answer_callback_query(call.id)
 
 #.from_user.first_name
+
 
 @bot.message_handler(func=lambda message: True, content_types=['text'])
 def echo(message):
