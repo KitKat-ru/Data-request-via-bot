@@ -18,7 +18,7 @@ server = Flask(__name__)
 @bot.message_handler(commands=['start'])
 def start(message):
     markup = telebot.types.InlineKeyboardMarkup()
-    buttonA = telebot.types.InlineKeyboardButton('request_contact', callback_data=message.from_user.first_name)
+    buttonA = telebot.types.InlineKeyboardButton('request_contact', callback_data=message.contact)
     markup.row(buttonA)
     bot.send_message(message.chat.id, f'Привет {message}, а дай номер.', reply_markup=markup)
 
@@ -26,7 +26,7 @@ def start(message):
 @bot.message_handler(commands=['start1'])
 def start(message):
     markup = telebot.types.InlineKeyboardMarkup()
-    buttonA = telebot.types.InlineKeyboardButton('request_contact', callback_data=message.from_user.phone_number)
+    buttonA = telebot.types.InlineKeyboardButton('request_contact', callback_data=message.contact)
     markup.row(buttonA)
     bot.send_contact(message.chat.id, f'Привет {message}, а дай номер.', reply_markup=markup)
 
