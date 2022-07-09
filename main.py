@@ -14,11 +14,11 @@ bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
 
 
-@bot.message_handler(commands=['start1'])
+@bot.message_handler(commands=['start'])
 def start(message):
-    bot.send_message(message.chat.id, f'Привет {message.from_user}, а дай номер.')
+    bot.send_message(message.chat.id, f'Привет {message}, а дай номер.')
 
-
+#.from_user.first_name
 
 @bot.message_handler(func=lambda message: True, content_types=['text'])
 def echo(message):
