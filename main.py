@@ -1,6 +1,6 @@
 import os
-import telebot, types
-# from telebot import types
+import telebot
+
 from flask import Flask, request
 from dotenv import load_dotenv
 
@@ -18,17 +18,17 @@ server = Flask(__name__)
 @bot.message_handler(commands=['start'])
 def start(message):
     markup = telebot.types.InlineKeyboardMarkup()
-    buttonA = telebot.types.InlineKeyboardButton('request_contact', callback_data=message.from_user)
+    buttonA = telebot.types.InlineKeyboardButton('request_contact', callback_data=message)
     markup.row(buttonA)
     bot.send_message(message.chat.id, f'Привет {message.from_user.first_name}, а дай номер.', reply_markup=markup)
 
 
-@bot.message_handler(commands=['start1'])
-def start(message):
-    markup = telebot.types.InlineKeyboardMarkup()
-    buttonA = telebot.types.InlineKeyboardButton('request_contact', callback_data=message.from_user)
-    markup.row(buttonA)
-    bot.send_contact(message.chat.id, f'Привет {message.from_user.first_name}, а дай номер.', reply_markup=markup)
+# @bot.message_handler(commands=['start1'])
+# def start(message):
+#     markup = telebot.types.InlineKeyboardMarkup()
+#     buttonA = telebot.types.InlineKeyboardButton('request_contact', callback_data=message.from_user)
+#     markup.row(buttonA)
+#     bot.send_contact(message.chat.id, f'Привет {message.from_user.first_name}, а дай номер.', reply_markup=markup)
 
 
 @bot.callback_query_handler(func=lambda call: True)
