@@ -25,18 +25,18 @@ def echo(message):
     bot.reply_to(message, message.text)
 
 
-@server.route('/' + TOKEN, methods=['POSTS'])
+@server.route('/' + TOKEN, methods=['POST'])
 def get_message():
-    json_string = request.get.data().decode('UTF-8')
-    update = telebot.tupes.Update.de_json(json_string)
+    json_string = request.get_data().decode('UTF-8')
+    update = telebot.types.Update.de_json(json_string)
     bot.process_new_updates([update])
     return '!', 200
 
 
 @server.route('/')
 def webhook():
-    bot.remove.webhook()
-    bot.set.webhook(url=APP_URL)
+    bot.remove_webhook()
+    bot.set_webhook(url=APP_URL)
     return '!', 200
 
 
