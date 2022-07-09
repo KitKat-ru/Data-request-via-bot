@@ -1,9 +1,9 @@
 import os
 import telebot
 from flask import Flask, request
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
 # TOKEN = os.getenv('TOKEN', default='YOU_TOKEN')
 # APP_URL = os.getenv('URL', default='HEROKU_URL')
