@@ -1,14 +1,13 @@
 import os
 import telebot
 from flask import Flask, request
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 
-# load_dotenv()
+load_dotenv()
 
-# TOKEN = os.getenv('TOKEN', default='YOU_TOKEN')
-# APP_URL = os.getenv('URL', default='HEROKU_URL')
-TOKEN = '5304389044:AAFz8QjdylhnXrPhXnpC_hJnkoJMh4mynAc'
-APP_URL = f'https://testcasebotartem.herokuapp.com/{TOKEN}'
+TOKEN = os.getenv('TOKEN', default='YOU_TOKEN')
+APP_URL = os.getenv(f'URL{TOKEN}', default=f'HEROKU_URL/{TOKEN}')
+
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -17,7 +16,7 @@ server = Flask(__name__)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.reply_to(message, 'Привет, а дай номер ' + message.from_user)
+    bot.reply_to(message, 'Привет, а дай номер ' + message)
 
 
 @bot.message_handler(func=lambda message: True, content_types=['text'])
@@ -41,4 +40,4 @@ def webhook():
 
 
 if __name__ == '__main__':
-    server.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+    server.run(host='0.0.0.0', port=int(os.environ.get('PORT', default=5000)))
