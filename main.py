@@ -5,10 +5,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-TOKEN = os.getenv('TOKEN', default='YOU_TOKEN')
-APP_URL = os.getenv('URL', default='HEROKU_URL')
-# TOKEN = '5304389044:AAFz8QjdylhnXrPhXnpC_hJnkoJMh4mynAc'
-# APP_URL = 'https://git.heroku.com/testcasebotartem.git'
+# TOKEN = os.getenv('TOKEN', default='YOU_TOKEN')
+# APP_URL = os.getenv('URL', default='HEROKU_URL')
+TOKEN = '5304389044:AAFz8QjdylhnXrPhXnpC_hJnkoJMh4mynAc'
+APP_URL = 'https://git.heroku.com/testcasebotartem.git'
 
 bot = telebot.TeleBot(TOKEN)
 
