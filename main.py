@@ -16,7 +16,7 @@ server = Flask(__name__)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.reply_to(message, 'Привет, а дай номер ' + message)
+    bot.send_message(f'Привет{message.from_user.first_name}, а дай номер.')
 
 
 @bot.message_handler(func=lambda message: True, content_types=['text'])
