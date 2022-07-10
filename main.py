@@ -24,6 +24,12 @@ def start(message):
     bot.send_message(message.chat.id, f'Привет {message.from_user.first_name}, а дай номер.', reply_markup=keyboard)
 
 
+@bot.message_handler(commands=['contact'])
+def capture_contacts(message):
+    print(message.contact)
+    print()
+    print(message)
+    bot.send_message(message.chat.id, f'Контакт {message.contact} сохранен. Спасибо!')
 @bot.message_handler(func=lambda message: True, content_types=['text'])
 def echo(message):
     bot.reply_to(message, message.text)
