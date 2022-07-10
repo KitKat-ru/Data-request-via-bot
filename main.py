@@ -21,7 +21,7 @@ def start(message):
     keyboard = telebot.types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True)
     button_phone = telebot.types.KeyboardButton(text='Передать боту номер телефона',request_contact=True)
     keyboard.add(button_phone)
-    bot.send_message(message.chat.id, 'Привет {message.from_user.first_name}, а дай номер.')
+    bot.send_message(message.chat.id, f'Привет {message.from_user.first_name}, а дай номер.', reply_markup=keyboard)
 
 
 @bot.message_handler(func=lambda message: True, content_types=['text'])
