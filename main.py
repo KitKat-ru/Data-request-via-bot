@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 TOKEN = os.getenv('TOKEN', default='YOU_TOKEN')
-APP_URL = os.getenv(f'URL{TOKEN}', default=f'HEROKU_URL/{TOKEN}')
-
+# APP_URL = os.getenv(f'URL{TOKEN}', default=f'HEROKU_URL{TOKEN}')
+APP_URL = f'https://testcasebotartem.herokuapp.com/{TOKEN}'
 
 bot = telebot.TeleBot(TOKEN)
 
