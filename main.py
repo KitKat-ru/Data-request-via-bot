@@ -20,7 +20,7 @@ def start(message):
     # markup = telebot.types.InlineKeyboardMarkup()
     # buttonA = telebot.types.InlineKeyboardButton('request_contact', callback_data=message)
     # markup.row(buttonA)
-    bot.send_message(message.chat.id, f'Привет {message.from_user.first_name}, а дай номер.') #, reply_markup=markup
+    bot.send_message(message.chat.id, f'Привет {message}, а дай номер.') #, reply_markup=markup
 
 
 # @bot.message_handler(commands=['start1'])
