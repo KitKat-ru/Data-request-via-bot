@@ -17,7 +17,7 @@ server = Flask(__name__)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.send_message(message.chat.id, f'Привет {message}, а дай номер.') #, reply_markup=markup
+    bot.reply_to(message, f'Привет {message}, а дай номер.')
 
 
 
