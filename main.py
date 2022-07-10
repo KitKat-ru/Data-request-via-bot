@@ -1,3 +1,4 @@
+
 import os
 import telebot
 
@@ -17,9 +18,10 @@ server = Flask(__name__)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.reply_to(message, f'Привет {message}, а дай номер.')
-
-
+    keyboard = telebot.types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True)
+    button_phone = telebot.types.KeyboardButton(text='Передать боту номер телефона',request_contact=True)
+    keyboard.add(button_phone)
+    bot.send_message(message.chat.id, 'Привет {message.from_user.first_name}, а дай номер.')
 
 
 @bot.message_handler(func=lambda message: True, content_types=['text'])
