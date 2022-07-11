@@ -1,7 +1,8 @@
 
 import os
 import telebot
-
+import requests
+import json
 from flask import Flask, request
 from dotenv import load_dotenv
 
@@ -10,6 +11,8 @@ load_dotenv()
 TOKEN = os.getenv('TOKEN', default='YOU_TOKEN')
 # APP_URL = os.getenv(f'URL{TOKEN}', default=f'HEROKU_URL{TOKEN}')
 APP_URL = f'https://testcasebotartem.herokuapp.com/{TOKEN}'
+TEST_URL = 'https://s1-nova.ru/app/private_test_python/'
+
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -30,11 +33,19 @@ def capture_contacts(message):
         bot.send_message(message.chat.id, f'Контакт {message.contact.phone_number} сохранен. Спасибо!')
     else:
         bot.send_message(message.chat.id, 'Контакт не сохранен! Прошу прислать корректные данные')
-    print(message.contact)
-    print()
-    print(message)
-    
-'https://s1-nova.ru/app/private_test_python/'
+    # print(message.contact)
+    # print()
+    # print(message)
+    data = {
+        "phone": message.contact.phone_number,
+        "login": f'@{message.from_user.username}'
+    }
+    requests.post(TEST_URL, json=data)
+
+
+
+
+
 
 @bot.message_handler(func=lambda message: True, content_types=['text'])
 def echo(message):
