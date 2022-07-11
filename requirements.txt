@@ -2,6 +2,7 @@ pyTelegramBotAPI==3.8.1
 python-dotenv==0.19.2
 Flask==2.0.1
 requests==2.27.1
+types_requests==2.28.0
 flake8==3.9.2
 flake8-docstrings==1.6.0
-jsonpickle==2.1.0
+isort==5.10.1
